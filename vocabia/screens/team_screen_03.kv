@@ -1,0 +1,88 @@
+<TeamScreen03>:
+    name: "team_03"
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "assets/background.png"
+
+    FloatLayout:
+        # 上方標題背景
+        Image:
+            source: "assets/team_00.png"
+            size_hint: 1, None
+            height: dp(80)
+            pos_hint: {"top": 1}
+            allow_stretch: True
+            keep_ratio: False
+
+        # 下方導覽背景
+        Image:
+            source: 'assets/icon.png'
+            size_hint: 1, None
+            height: dp(70)
+            pos_hint: {"x": 0, "y": 0}
+            allow_stretch: True
+            keep_ratio: False
+
+        # 隊伍名稱 + 隊員資訊
+        BoxLayout:
+            orientation: "vertical"
+            spacing: dp(10)
+            padding: dp(20), dp(100), dp(20), dp(90)  # 避開上下圖
+            size_hint: 1, 1
+
+            Label:
+                id: team_name_label
+                text: ""
+                font_name: "DefaultTC"
+                font_size: "24sp"
+                bold: True
+                color: 0, 0, 0, 1
+                size_hint_y: None
+                height: dp(40)
+
+            ScrollView:
+                do_scroll_x: False
+
+                BoxLayout:
+                    id: team_info
+                    orientation: "vertical"
+                    spacing: dp(10)
+                    size_hint_y: None
+                    height: self.minimum_height
+
+        # 底部導覽按鈕列
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 100
+            pos_hint: {"x": 0, "y": 0}
+            padding: dp(10), 0
+            spacing: dp(5)
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'level'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.go_team_screen()
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'home'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'sort'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'favorites'

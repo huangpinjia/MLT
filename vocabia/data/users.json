@@ -1,0 +1,27 @@
+{
+    "amy": {
+        "password": "1234",
+        "team": "字彙小王子",
+        "score": 150
+    },
+    "ben": {
+        "password": "5678",
+        "team": "字彙小王子",
+        "score": 100
+    },
+    "carol": {
+        "password": "4321",
+        "team": "字彙小王子",
+        "score": 0
+    },
+    "a": {
+        "password": "1",
+        "team": "每日十單字",
+        "score": 0
+    },
+    "aa": {
+        "password": "1",
+        "team": "考試衝刺隊",
+        "score": 0
+    }
+}

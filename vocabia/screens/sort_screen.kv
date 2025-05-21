@@ -1,0 +1,135 @@
+<SortScreen>:
+    name: "sort"
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "assets/background.png"
+
+    FloatLayout:
+
+        # ▓ 上方標題圖
+        Image:
+            source: "assets/word_library.png"
+            size_hint: 1, None
+            height: dp(75)
+            pos_hint: {"top": 1}
+            allow_stretch: True
+            keep_ratio: False
+
+        # ▓ TOEIC 圓角按鈕區塊
+        FloatLayout:
+            size_hint: 0.36, 0.18
+            pos_hint: {"x": 0.07, "top": 0.72}
+
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]
+
+            Image:
+                source: 'assets/TOEIC.png'
+                size_hint: 0.8, 0.8
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                allow_stretch: True
+                keep_ratio: True
+
+            Button:
+                background_color: 1, 1, 1, 0
+                size_hint: 1, 1
+                on_press: root.goto_toeic()
+
+        # ▓ GRE 圓角按鈕區塊
+        FloatLayout:
+            size_hint: 0.36, 0.18
+            pos_hint: {"x": 0.57, "top": 0.72}
+
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]
+
+            Image:
+                source: 'assets/GRE.png'
+                size_hint: 0.8, 0.8
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                allow_stretch: True
+                keep_ratio: True
+
+            Button:
+                background_color: 1, 1, 1, 0
+                size_hint: 1, 1
+                on_press:print(TOEIC)
+
+        # ▓ TOEFL 圓角按鈕區塊
+        FloatLayout:
+            size_hint: 0.36, 0.18
+            pos_hint: {"x": 0.07, "top": 0.51}
+
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]
+
+            Image:
+                source: 'assets/TOEFL.png'
+                size_hint: 0.8, 0.8
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                allow_stretch: True
+                keep_ratio: True
+
+            Button:
+                background_color: 1, 1, 1, 0
+                size_hint: 1, 1
+                on_press: root.goto_toefl()
+
+        # 底部導覽背景圖
+        Image:
+            source: 'assets/icon.png'
+            size_hint: 1, None
+            height: dp(70)  # 你可以再微調數值，如 dp(80)
+            pos_hint: {"x": 0, "y": 0}
+            allow_stretch: True
+            keep_ratio: False
+
+        # 導覽按鈕區
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 100
+            pos_hint: {"x": 0, "y": 0}
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'level'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.go_team_screen()
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'home'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'sort'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'favorites'

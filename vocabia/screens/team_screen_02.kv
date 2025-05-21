@@ -1,0 +1,69 @@
+<TeamScreen02>:
+    name: "team_02"
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "assets/background.png"
+
+    FloatLayout:
+        # 標題圖
+        Image:
+            source: "assets/team_00.png"
+            size_hint: 1, None
+            height: dp(80)
+            pos_hint: {"top": 1}
+            allow_stretch: True
+            keep_ratio: False
+
+        # 隊伍資訊內容區（由 Python 動態加入）
+        BoxLayout:
+            id: team_info
+            orientation: 'vertical'
+            size_hint: 1, None
+            height: self.minimum_height
+            pos_hint: {"center_y": 0.5}
+            spacing: dp(10)
+            padding: dp(20), dp(10)
+
+        # 底部導覽背景
+        Image:
+            source: 'assets/icon.png'
+            size_hint: 1, None
+            height: dp(70)
+            pos_hint: {"x": 0, "y": 0}
+            allow_stretch: True
+            keep_ratio: False
+
+        # 導覽列
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 100
+            pos_hint: {"x": 0, "y": 0}
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'level'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.go_team_screen()
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'team_01'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'team_02'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'sort'

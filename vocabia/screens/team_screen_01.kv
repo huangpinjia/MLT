@@ -1,0 +1,70 @@
+<TeamScreen01>:
+    name: "team_01"
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "assets/background.png"
+
+    FloatLayout:
+
+        # 頁面標題圖
+        Image:
+            source: "assets/team_00.png"
+            size_hint: 1, None
+            height: dp(80)
+            pos_hint: {"top": 1}
+            allow_stretch: True
+            keep_ratio: False
+
+        # 隊伍卡片區域（由 Python 加入）
+        BoxLayout:
+            id: team_box
+            orientation: 'vertical'
+            size_hint: 1, None
+            height: self.minimum_height
+            spacing: dp(20)
+            pos_hint: {"center_y": 0.55}
+            padding: dp(20), 0
+
+        # 底部導覽背景
+        Image:
+            source: 'assets/icon.png'
+            size_hint: 1, None
+            height: dp(70)
+            pos_hint: {"x": 0, "y": 0}
+            allow_stretch: True
+            keep_ratio: False
+
+        # 導覽列按鈕
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 100
+            pos_hint: {"x": 0, "y": 0}
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'level'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.go_team_screen()
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'home'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'sort'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'favorites'

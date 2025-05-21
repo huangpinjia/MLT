@@ -1,0 +1,79 @@
+<SignUpScreen>:
+    FloatLayout:
+        # 背景圖
+        Image:
+            source: 'assets/background.png'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, 1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        # LOGO
+        Image:
+            source: 'assets/logo.png'
+            size_hint: 0.28, 0.28
+            pos_hint: {"center_x": 0.5, "top": 0.89}
+
+        # 上方選單按鈕（SIGN IN / SIGN UP）
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 0.6, None
+            height: dp(30)
+            pos_hint: {"center_x": 0.5, "y": 0.63}
+            spacing: dp(10)
+
+            Button:
+                text: "SIGN IN"
+                font_name: "DefaultTC"
+                background_normal: ""
+                background_color: 0, 0, 0, 0
+                color: 0, 0, 0, 1
+                on_press: app.root.current = 'login'
+
+            Button:
+                markup: True
+                text: "SIGN UP"
+                font_name: "DefaultTC"
+                background_normal: ""
+                background_color: 0, 0, 0, 0
+                color: 0.5, 0.5, 0.5, 1
+                on_press: app.root.current = 'signup'
+
+        # Username 輸入欄
+        TextInput:
+            id: new_username
+            hint_text: "username"
+            size_hint: 0.8, 0.08
+            pos_hint: {"center_x": 0.5, "center_y": 0.48}
+            multiline: False
+            background_normal: ''
+            background_color: 1, 1, 1, 0.9
+            foreground_color: 0, 0, 0, 1
+            padding: [dp(10), dp(10)]
+            font_name: "DefaultTC"
+
+        # Password 輸入欄
+        TextInput:
+            id: new_password
+            hint_text: "password"
+            password: True
+            size_hint: 0.8, 0.08
+            pos_hint: {"center_x": 0.5, "center_y": 0.39}
+            multiline: False
+            background_normal: ''
+            background_color: 1, 1, 1, 0.9
+            foreground_color: 0, 0, 0, 1
+            padding: [dp(10), dp(10)]
+            font_name: "DefaultTC"
+
+        # 註冊按鈕
+        Button:
+            text: "SIGN UP"
+            font_name: "DefaultTC"
+            size_hint: 0.8, 0.08
+            pos_hint: {"center_x": 0.5, "center_y": 0.29}
+            background_normal: ''
+            background_color: 0.6, 0.8, 1, 1
+            color: 1, 1, 1, 1
+            border: [20, 20, 20, 20]
+            on_press: root.do_signup()

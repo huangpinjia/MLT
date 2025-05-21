@@ -1,0 +1,162 @@
+<HomeScreen>:
+    FloatLayout:
+
+        # 背景圖
+        Image:
+            source: 'assets/background.png'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, 1
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+        # 使用者頭像 + 名稱
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 0.85, 0.15
+            pos_hint: {"center_x": 0.5, "top": 0.92}
+            spacing: 10
+            padding: 10
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [30]
+
+            Image:
+                source: 'assets/head.png'
+                size_hint_x: 0.3
+                allow_stretch: True
+                keep_ratio: True
+
+            Label:
+                id: username_label
+                text: ""  # <- 從 Python 傳入登入使用者名稱
+                font_name: "DefaultTC"
+                font_size: 18
+                color: 0, 0, 0, 1
+                halign: "left"
+                valign: "middle"
+                text_size: self.size
+
+        # 中間功能區塊（icon_02.png 當背景，右側三顆 ToggleButton）
+        FloatLayout:
+            size_hint: 0.85, 0.3
+            pos_hint: {"center_x": 0.5, "top": 0.7}
+
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    source: 'assets/icon_02.png'
+                    pos: self.pos
+                    size: self.size
+                    radius: [30]
+
+            # ToggleButton #1
+            ToggleButton:
+                size_hint: None, None
+                size: dp(60), dp(30)
+                pos_hint: {"right": 0.95, "top": 0.9}
+                background_normal: ''
+                background_down: ''
+                background_color: (0.2, 0.8, 0.4, 1) if self.state == 'down' else (0.7, 0.7, 0.7, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [30]
+                canvas.after:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Ellipse:
+                        size: dp(26), dp(26)
+                        pos: (self.right - dp(32), self.y + dp(2)) if self.state == 'down' else (self.x + dp(4), self.y + dp(2))
+
+            # ToggleButton #2
+            ToggleButton:
+                size_hint: None, None
+                size: dp(60), dp(30)
+                pos_hint: {"right": 0.95, "center_y": 0.5}
+                background_normal: ''
+                background_down: ''
+                background_color: (0.2, 0.8, 0.4, 1) if self.state == 'down' else (0.7, 0.7, 0.7, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [30]
+                canvas.after:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Ellipse:
+                        size: dp(26), dp(26)
+                        pos: (self.right - dp(32), self.y + dp(2)) if self.state == 'down' else (self.x + dp(4), self.y + dp(2))
+
+            # ToggleButton #3
+            ToggleButton:
+                size_hint: None, None
+                size: dp(60), dp(30)
+                pos_hint: {"right": 0.95, "y": 0.05}
+                background_normal: ''
+                background_down: ''
+                background_color: (0.2, 0.8, 0.4, 1) if self.state == 'down' else (0.7, 0.7, 0.7, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [30]
+                canvas.after:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Ellipse:
+                        size: dp(26), dp(26)
+                        pos: (self.right - dp(32), self.y + dp(2)) if self.state == 'down' else (self.x + dp(4), self.y + dp(2))
+
+        # 底部導覽背景圖
+        Image:
+            source: 'assets/icon.png'
+            size_hint: 1, None
+            height: dp(70)  # 你可以再微調數值，如 dp(80)
+            pos_hint: {"x": 0, "y": 0}
+            allow_stretch: True
+            keep_ratio: False
+
+        # 導覽按鈕區
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 100
+            pos_hint: {"x": 0, "y": 0}
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'level'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.go_team_screen()
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'home'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'sort'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'favorites'

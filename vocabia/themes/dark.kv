@@ -1,0 +1,60 @@
+<LoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 50
+        Label:
+            text: "歡迎背單字！"
+            font_size: 32
+        Button:
+            text: "開始"
+            on_press: root.manager.current = "home"
+
+<HomeScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        Label:
+            id: score_label
+            font_size: 24
+        Button:
+            text: "主題單字"
+            on_press: root.manager.current = "vocab"
+        Button:
+            text: "測驗"
+            on_press: root.manager.current = "quiz"
+
+<VocabScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        Label:
+            id: word_label
+            text: "單字"
+            font_size: 32
+        Label:
+            id: meaning_label
+            text: "意思"
+            font_size: 24
+        Button:
+            text: "播放發音"
+            on_press: root.play_pronunciation()
+
+<QuizScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        Label:
+            text: "這個單字是什麼意思？"
+        Button:
+            text: "選項 A"
+            on_press: root.submit_answer("A")
+        Button:
+            text: "選項 B"
+            on_press: root.submit_answer("B")
+        Button:
+            text: "選項 C"
+            on_press: root.submit_answer("C")
+        Button:
+            text: "選項 D"
+            on_press: root.submit_answer("D")

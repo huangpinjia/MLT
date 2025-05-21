@@ -1,0 +1,110 @@
+# ✅ 自定義：圓角圖片按鈕元件（已修正 radius）
+<RoundedImageButton@ButtonBehavior+Widget>:
+    source: ""
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1  # 背景白
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [20]
+        StencilPush
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [20]
+        StencilUse
+        Rectangle:
+            source: self.source
+            pos: self.pos
+            size: self.size
+        StencilUnUse
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [20]
+        StencilPop
+
+
+<TeamScreen00>:
+    name: "team_00"
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "assets/background.png"
+
+    FloatLayout:
+
+        # 標題圖
+        Image:
+            source: "assets/team_00.png"
+            size_hint: 1, None
+            height: dp(80)
+            pos_hint: {"top": 1}
+            allow_stretch: True
+            keep_ratio: False
+
+        # ✅ 中央：圓角圖片按鈕組（置中 + 可點擊）
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, None
+            height: dp(180)
+            spacing: dp(25)
+            pos_hint: {"center_y": 0.5}
+
+            RoundedImageButton:
+                source: "assets/team_01.png"
+                size_hint: 0.75, None
+                height: dp(65)
+                pos_hint: {"center_x": 0.5}
+                on_release: print("創建隊伍按下")
+
+            RoundedImageButton:
+                source: "assets/team_02.png"
+                size_hint: 0.75, None
+                height: dp(65)
+                pos_hint: {"center_x": 0.5}
+                on_release: root.manager.current = "team_01"
+
+        # 底部導覽背景圖
+        Image:
+            source: 'assets/icon.png'
+            size_hint: 1, None
+            height: dp(70)
+            pos_hint: {"x": 0, "y": 0}
+            allow_stretch: True
+            keep_ratio: False
+
+        # 導覽按鈕區
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 100
+            pos_hint: {"x": 0, "y": 0}
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'level'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: root.manager.current = "team_00"
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'home'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'sort'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'favorites'

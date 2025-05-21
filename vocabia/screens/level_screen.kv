@@ -1,0 +1,83 @@
+<LevelScreen>:
+    name: "level"
+
+    FloatLayout:
+        # 背景圖
+        Image:
+            source: "assets/background.png"
+            allow_stretch: True
+            keep_ratio: False
+            size: self.size
+            pos: self.pos
+
+        Image:
+            source: 'assets/icon.png'
+            size_hint: 1, None
+            height: dp(70)
+            pos_hint: {"x": 0, "y": 0}
+            allow_stretch: True
+            keep_ratio: False
+
+        Image:
+            source: "assets/level_top.png"
+            size_hint: 1, None
+            height: dp(75)
+            pos_hint: {"top": 1}
+            allow_stretch: True
+            keep_ratio: False
+
+        # 可滑動關卡區域
+        ScrollView:
+            bar_width: 0
+            size_hint: 1, 1
+            do_scroll_x: False
+            do_scroll_y: True
+
+            RelativeLayout:
+                id: level_area
+                size_hint: None, None
+                width: root.width
+                height: dp(1000)
+
+                # 動態生成關卡按鈕 + 玩家角色（由 Python 控制）
+
+        # 底部導覽背景圖
+        Image:
+            source: 'assets/icon.png'
+            size_hint: 1, None
+            height: dp(70)  # 你可以再微調數值，如 dp(80)
+            pos_hint: {"x": 0, "y": 0}
+            allow_stretch: True
+            keep_ratio: False
+
+        # 導覽按鈕區
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 100
+            pos_hint: {"x": 0, "y": 0}
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'level'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.go_team_screen()
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'home'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'sort'
+
+            Button:
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                on_press: app.root.current = 'favorites'
